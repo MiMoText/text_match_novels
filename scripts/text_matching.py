@@ -1,29 +1,39 @@
-# https://github.com/lit-mod-viz/middlemarch-critical-histories/blob/master/notebooks/anthologies-match.ipynb
-# https://github.com/JonathanReeve/text-matcher/blob/master/examples/jupyter-example.ipynb
-from os.path import join
-import pandas as pd
-import text_matcher
-from text_matcher.matcher import Matcher, Text
-import nltk
+#!/usr/bin/env python3
+
+'''
+text_matching.py
+
+Fuzzy text matching to analyse text re-use in the roman18 corpus
+of the MiMoText project (https://github.com/MiMoText/roman18).
+'''
+
 import glob
-from os.path import basename
 import os
+from os.path import basename, join
 import re
-#import spacy
-nltk.download("stopwords")
+
+import nltk
+import pandas as pd
+from text_matcher.matcher import Matcher, Text
 
 
-def read_file(txtfile, filename):
-	# read file
+SOURCE_PATH = '../../roman18/plain/files'
+RESULTS_PATH = 'test_output/'
+
+
+def read_file(txtfile):
+	'''Read file and delete unwanted whitespace.'''
 	with open(txtfile, "r", encoding="utf-8") as infile:
 		txt = infile.read()
 	txt = re.sub("' ", "'", txt)	
 	return txt
 
 def find_matches(text_dict, search_text_name, search_text):
-	
-	# find matches with text_matcher
-	# iterate over all texts and saves results in dictionary, i.e. number of matches, locations in both texts A and B
+	'''Find matches with text_matcher.
+
+	iterate over all texts and saves results in dictionary, i.e. number of matches,
+	locations in both texts A and B
+	'''
 	matches_list = {}
 	txt = Text(search_text, search_text_name)
 	
@@ -36,22 +46,22 @@ def find_matches(text_dict, search_text_name, search_text):
 	return matches_list
 
 def main():
-	
-	path = join("..", "..", "plain", "files", "*.txt")
+	path = join(SOURCE_PATH, '*.txt')
+	#path = join("..", "..", "plain", "files", "*.txt")
 	#path = join("..", "..", "plain", "matchingtestfiles", "*.txt")
-	if not os.path.exists(join("..", "..", "text_matches_csv_files")):
-		os.mkdir(join("..", "..", "text_matches_csv_files"))
+	#if not os.path.exists(join("..", "..", "text_matches_csv_files")):
+	#	os.mkdir(join("..", "..", "text_matches_csv_files"))
 		
-	savepath = join("..", "..", "text_matches_csv_files")
-	
-	
+	#savepath = join("..", "..", "text_matches_csv_files")
+	savepath = join(RESULTS_PATH, '.')
+
 	text_dict = {}
 	#for infile in glob.glob(path):
 	for infile in glob.glob(path):
 		filename = basename(infile).split(".")[0]
 		print(filename)
 		# read file and add to dictionary: filenames as key, texts as value
-		txt = read_file(infile, filename)
+		txt = read_file(infile)
 		text_dict[filename] = txt
 	
 	# iterate over complete text-dictionary
@@ -98,5 +108,8 @@ def main():
 			#print(df_texts)
 
 			df_texts.to_csv(join(savepath, "thresh_15_{}_texts.csv".format(search_text_name)), encoding="utf8")
-		
-main()
+
+
+if __name__ == '__main__':
+	nltk.download('stopwords')
+	main()
