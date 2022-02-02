@@ -14,7 +14,7 @@ The software in this repository is available under the terms of the MIT license,
 
 The tool was developed by Jonathan Reeve. 
 
-'''
+```
 @misc{Reeve2020,
   author = {Reeve, Jonathan},
   title = {Text-Matcher},
@@ -25,4 +25,4 @@ The tool was developed by Jonathan Reeve.
   commit = {988d9422a63165225ea136fc31427b1e57814505},
   doi = {10.5281/zenodo.3937738}
 }
-'''
+```
