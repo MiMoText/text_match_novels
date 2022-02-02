@@ -8,11 +8,11 @@ The results of the text matching process are available as csv files in the `text
 
 ## Licence
 
-The software in this repository is available under the terms of the MIT license, unless explicitly specified otherwise.
+The software in this repository is available under the terms of the GPLv3 license, unless explicitly specified otherwise.
 
 ## Reference
 
-The tool ```text-matcher``` was developed by Jonathan Reeve. 
+The tool ```text-matcher``` was developed by Jonathan Reeve. It is used under the terms of the GPLv3.
 
 ```
 @misc{Reeve2020,
