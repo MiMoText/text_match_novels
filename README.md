@@ -12,7 +12,7 @@ The software in this repository is available under the terms of the MIT license,
 
 ## Reference
 
-The tool was developed by Jonathan Reeve. 
+The tool ```text-matcher``` was developed by Jonathan Reeve. 
 
 ```
 @misc{Reeve2020,
