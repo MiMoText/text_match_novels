@@ -1,6 +1,6 @@
 # Text Matching for Novels
 
-Fuzzy text matching to analyse text re-use in novels from the [roman18 corpus](https://github.com/MiMoText/roman18) in the context of the ["Mining and Modeling Text"](https://www.mimotext.uni-trier.de/en) project (University Trier, Germany). 
+Fuzzy text matching to analyse text re-use in French englightenment novels from the [roman18 corpus](https://github.com/MiMoText/roman18) in the context of the ["Mining and Modeling Text"](https://www.mimotext.uni-trier.de/en) project (University Trier, Germany). 
 
 ## Description
 
